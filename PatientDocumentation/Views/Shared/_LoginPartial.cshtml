@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNet.Identity
+@using PatientDocumentation.Services
+
+@if (Request.IsAuthenticated)
+{
+    string firstName = FirstNameService.GetUserFirstName(User.Identity.GetUserId()) ?? User.Identity.GetUserName();
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+            <ul class="nav navbar-nav navbar-right nav-item" style="display:inline;">
+                <li class="nav-item" style="padding:10px;">
+                    @Html.ActionLink("Hello " + firstName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", id = "greeting", @class = "text-light" })
+                </li>
+                <li class="nav-item" style="padding:10px;"><a href="javascript:document.getElementById('logoutForm').submit()" class="text-light">Log off</a></li>
+            </ul>
+    }
+}
+else
+{
+        <ul class="nav navbar-nav navbar-right nav-item" style="display:inline;">
+            <li class="text-secondary nav-item" style="padding:10px;">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "text-light" })</li>
+            <li class="text-secondary nav-item" style="padding:10px;">@Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "text-light" })</li>
+        </ul>
+}

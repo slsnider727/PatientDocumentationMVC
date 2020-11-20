@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PatientDocumentation.Models.AppointmentModels.AppointmentListItem>
+
+@{
+    ViewBag.Title = "Patient Appointments";
+}
+
+    <h2>@ViewBag.Heading</h2>
+
+
+@if (User.IsInRole("Admin") || User.IsInRole("Receptionist"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduledStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Provider)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    @Html.HiddenFor(modelItem => item.AppointmentId)
+    <td>
+        @Html.ActionLink(item.Patient, "Details", "Patient", new { id = item.PatientId }, null)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ScheduledStart)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Length)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Provider)
+    </td>
+    @if (User.IsInRole("Receptionist") || User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.AppointmentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AppointmentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AppointmentId })
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.AppointmentId }) @*|
+            @Html.ActionLink("Document", "Create", "TreatmentNote", new { id = item.AppointmentId }, null)*@
+        </td>
+    }
+</tr>
+    }
+
+</table>

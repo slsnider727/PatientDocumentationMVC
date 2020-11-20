@@ -1,0 +1,67 @@
+﻿@model PatientDocumentation.Models.AppointmentModels.AppointmentDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <br />
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.AppointmentId)
+        @Html.HiddenFor(model => model.Created)
+        @Html.HiddenFor(model => model.CreatedBy)
+        @Html.HiddenFor(model => model.Modified)
+        @Html.HiddenFor(model => model.ModifiedBy)
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduledStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduledStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Length) minutes
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientId) -
+            @Html.DisplayFor(model => model.Patient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Provider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderId) -
+            @Html.DisplayFor(model => model.Provider)
+        </dd>
+
+    </dl>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    }
+</div>
+<br />
+<div>
+    @Html.ActionLink("Cancel", "Index")
+</div>

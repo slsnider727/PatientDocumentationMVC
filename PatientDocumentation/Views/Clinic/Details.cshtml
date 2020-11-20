@@ -1,0 +1,59 @@
+﻿@model PatientDocumentation.Models.ClinicModels.ClinicDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        @if (User.IsInRole("Admin") || User.IsInRole("Receptionist") || User.IsInRole("Provider"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.ClinicId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ClinicId)
+            </dd>
+        }
+
+        @Html.HiddenFor(model => model.ClinicId)
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)<br />
+            @Html.DisplayFor(model => model.City),
+            @Html.DisplayFor(model => model.State)
+            @Html.DisplayFor(model => model.Zip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+    </dl>
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ClinicId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

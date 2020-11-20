@@ -1,0 +1,89 @@
+﻿@model IEnumerable<PatientDocumentation.Models.ClinicModels.ClinicListItem>
+
+@{
+    ViewBag.Title = "Clinics";
+}
+
+<h2>Locations</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+
+@if (User.IsInRole("Admin"))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClinicId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClinicId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ClinicId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ClinicId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ClinicId })
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+@if (!User.IsInRole("Admin"))
+{
+    <div class="py-5 bg-light">
+        <div class="container mx-auto">
+            <div class="row flex-container mx-auto">
+                @foreach (var item in Model)
+                {
+                    <div class="flexcard">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="/Images/Clinic.jpg" class="bd-placeholder-img card-img-top" width="297" height="225" xmlns="http://www.w3.org/2000/svg"
+                                 preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Clinic">
+                            <rect width="100%" height="100%" fill="#55595c" />
+                            <div class="card-body align-content-center">
+                                <h5>@Html.DisplayFor(modelItem => item.Name)</h5>
+                                @Html.DisplayFor(modelItem => item.Address)<br />
+                                @Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.State) @Html.DisplayFor(modelItem => item.Zip)<br />
+                                @Html.DisplayFor(modelItem => item.Phone)
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        @Html.ActionLink("Details", "Details", new { id = item.ClinicId })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

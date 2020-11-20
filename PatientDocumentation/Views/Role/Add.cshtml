@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Role To User</h2>
+<hr />
+
+<div class="row col-sm-12 col-lg-12 col-md-12">
+
+    <div class="col-sm-6 col-lg-6 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new  { @class = "text-danger" })
+
+                    <p>User Name: @Request.Params["userName"]</p>
+                    <p>Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
+                    <p><input type="submit" value="Save" class="btn btn-default" /></p>
+
+                }
+            </div> <!-- End Panel Body-->
+        </div> <!-- End Panel -->
+
+
+
+    </div> <!--End Column-->
+
+</div>  <!--Overall Page Wrapper-->

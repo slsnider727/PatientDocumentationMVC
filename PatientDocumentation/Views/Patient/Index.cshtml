@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PatientDocumentation.Models.PatientModels.PatientListItem> /*Tells the View what model I'm using.*/
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Patients</h3>
+
+@if (User.IsInRole("Admin") || User.IsInRole("Receptionist"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.PatientId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DOB)
+    </td>
+    @if (User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.PatientId }) |
+            @Html.ActionLink("Notes", "Index", "TreatmentNote", new { id = item.PatientId }, null) |
+            @Html.ActionLink("Appointments", "IndexByPatient", "Appointment", new { id = item.PatientId }, null) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.PatientId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PatientId })
+        </td>
+    }
+    else
+    {
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.PatientId }) |
+            @Html.ActionLink("Notes", "Index", "TreatmentNote", new { id = item.PatientId }, null) |
+            @Html.ActionLink("Appointments", "IndexByPatient", "Appointment", new { id = item.PatientId }, null) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.PatientId })
+        </td>
+    }
+</tr>
+    }
+
+</table>

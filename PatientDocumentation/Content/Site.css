@@ -1,0 +1,146 @@
+﻿body {
+    /*padding-top: 50px;*/
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column */
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*Set buttons to custom coloring*/
+.btn-default {
+    background-color: #4F4789;
+    color: white;
+    border-color: #4F4789;
+}
+
+    .btn-default:hover {
+        background-color: #382d5f;
+        color: white;
+        border-color: #382d5f;
+    }
+
+a {
+    color: #FF700A;
+}
+
+    a:hover {
+        color: #FFB17A;
+        text-decoration: none;
+    }
+
+h2 {
+    color: #382d5f;
+}
+
+h3 {
+    color: #382d5f;
+}
+
+h5 {
+    color: #382d5f;
+}
+
+.multi-line {
+    max-width: 100%;
+}
+
+/*Set alert messages to custom coloring*/
+.alert-success {
+    color: #128A95;
+    background-color: #DDEFF9;
+    border-color: #C4E4F4;
+}
+
+/*Navbar styling*/
+.navbar {
+    background-color: #128A95;
+    margin-bottom: 1.5rem;
+}
+
+.nav > li {
+    float: left;
+    display: inline-flex;
+}
+
+    .nav > li :hover {
+        text-decoration: none;
+    }
+
+.dropdown > button {
+    color: white;
+}
+
+.dropdown :hover {
+    color: #cbd3da;
+}
+
+.dropdown-menu > li > a {
+    font-size: 1.2em;
+    color: #343a40;
+    margin: 10px;
+}
+/*Navbar end*/
+
+
+/*Home Page Styling*/
+.jumbotron img {
+    width: 100%;
+}
+
+.jumbotron {
+    padding: 2rem;
+}
+
+#homepage-btn {
+    background-color: #4F4789;
+    border-color: #4F4789;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 1em;
+    margin: 1em 0 1em 0;
+}
+
+    #homepage-btn:hover {
+        background-color: #382d5f;
+    }
+/*Home Page End*/
+
+/*Professional Portal Styling*/
+#pro-portal {
+    text-align: center;
+    margin: 2rem;
+}
+
+#pro-container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#pro-container a {
+    margin: .5rem 0 1rem 0;
+}
+/*Professional Portal End*/
+
+/* Adjusts flexbox item sizes and spacing for uniform appearance*/
+div .flexcard {
+    flex-basis: 297px;
+}
+.flex-container {
+    justify-content: space-evenly;
+}

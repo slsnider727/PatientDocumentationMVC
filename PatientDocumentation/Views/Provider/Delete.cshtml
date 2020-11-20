@@ -1,0 +1,86 @@
+﻿@model PatientDocumentation.Models.ProviderModels.ProviderDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <div style=" margin-top:1em;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-content:space-between;
+            align-items: center;
+            background-image: url( @Url.Content(Model.ImagePath) );
+            max-width: 250px;
+            height: 250px;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            ">
+            </div>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.License)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.License)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specialization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clinic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicId) -
+            @Html.DisplayFor(model => model.Clinic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicPhone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Cancel", "Index")
+        </div>
+    }
+</div>

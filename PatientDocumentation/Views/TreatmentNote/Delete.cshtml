@@ -1,0 +1,109 @@
+﻿@model PatientDocumentation.Models.TreatmentNoteModels.TreatmentNoteDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentNoteId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentNoteId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Provider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Provider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalTreatTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalTreatTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppointmentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppointmentId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-default" /> |
+    @Html.ActionLink("Cancel", null, null, null, new { href = Request.UrlReferrer })
+</div>
+    }
+</div>

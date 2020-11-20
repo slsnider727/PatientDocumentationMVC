@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PatientDocumentation.Models.UserListItem>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Index</h2>
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RolesList)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RolesList)
+            </td>
+            <td>
+                @Html.ActionLink("Add Role", "Add", new { userName = item.UserName }) |
+                @Html.ActionLink("Remove Role", "Remove", new { userName = item.UserName })
+            </td>
+        </tr>
+    }
+
+</table>
+

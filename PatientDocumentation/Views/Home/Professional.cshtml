@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Professional";
+}
+
+<h2 id="pro-portal">EFA Health Professional Portal</h2>
+
+<div class="jumbotron">
+    <img src="~/Images/nursewearsmask.jpg" />
+</div>
+
+<div class="container row justify-content-center" id="pro-container">
+    <div class="col">
+        <span>
+            @Html.ActionLink("My Schedule", "IndexByUser", "Appointment", null, new { @class = "btn btn-lg btn-block btn-primary text-white", role = "button", id = "homepage-btn" })
+        </span>
+    </div>
+    <div class="col">
+        <span>
+            @Html.ActionLink("View Patient List", "Index", "Patient", null, new { @class = "btn btn-lg btn-block btn-primary text-white", role = "button", id = "homepage-btn" })
+        </span>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PatientDocumentation.Models.AppointmentModels.AppointmentListItem>
+
+@{
+    ViewBag.Title = "IndexByUser";
+}
+
+<h2>My Schedule</h2>
+
+<p>
+    @Html.ActionLink("View All Appointments", "Index")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduledStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Provider)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+            @Html.HiddenFor(modelItem => item.AppointmentId)
+        <td>
+            @Html.ActionLink(item.Patient, "Details", "Patient", new { id = item.PatientId }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScheduledStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Provider)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.AppointmentId }) |
+            @Html.ActionLink("Document", "Create", "TreatmentNote", new { id = item.AppointmentId }, null)
+        </td>
+    </tr>
+}
+
+</table>

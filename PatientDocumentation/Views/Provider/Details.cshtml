@@ -1,0 +1,93 @@
+﻿@model PatientDocumentation.Models.ProviderModels.ProviderDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h3>@Html.DisplayFor(model => model.FullName) </h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <div style=" margin-top:1em;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-content:space-between;
+            align-items: center;
+            background-image: url( @Url.Content(Model.ImagePath) );
+            max-width: 250px;
+            height: 250px;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            ">
+            </div>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.License)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.License)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specialization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clinic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clinic)
+            <br />
+            @Html.DisplayFor(model => model.ClinicAddress)
+            <br />
+            @Html.DisplayFor(model => model.ClinicCityStateZip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicPhone)
+        </dd>
+        @if (User.IsInRole("Admin"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+        }
+
+    </dl>
+</div>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProviderId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+else
+{
+    @Html.ActionLink("Back to List", "Index")
+}
+
